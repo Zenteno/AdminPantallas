@@ -24,30 +24,8 @@ Route::group(['middleware' => 'auth'], function () {
     #adminlte_routes
 });
 
-Route::get('/home', function () {
-	$files = File::allFiles("./storage/Videos/Completo");
-	$arreglo = [];
-	foreach ($files as $file)
-	    $arreglo[]=$file->getFilename();
-	$files = File::allFiles("./storage/Videos/1");
-	$arreglo1 = [];
-	foreach ($files as $file)
-	    $arreglo1[]=$file->getFilename();
-	return view('vendor.adminlte.home1')->with(["repo" => $arreglo, "personal"=>$arreglo1]);
-})->middleware('auth');
+Route::get('home', 'HomeController@index')->middleware('auth');
 
-Route::post('/archivos', function(Request $request){
-	if ($request->hasFile('archivos')) {
-		$file = $request->file('archivos');
-		$nombre = $file[0]->getClientOriginalName();
-		$file[0]->storeAs('public/Videos/Completo',$nombre);
-		return ["success"=>true, "nombre"=>$nombre];
-	}
-	return;
-});
-Route::post('/copiar', function(Request $request){
-	$archivo = $request["archivo"];
-	File::copy("./storage/Videos/Completo/".$archivo, "./storage/Videos/1/".$archivo);
-	return $archivo;
-});
+Route::post('/archivos', 'HomeController@archivo');
+Route::post('/copiar', 'HomeController@copiar');
 Auth::routes();

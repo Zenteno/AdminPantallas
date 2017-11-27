@@ -72,6 +72,26 @@
       					}
       				));
       			});
+
+          $(".btn-canal").click(function(){
+  				      var canal9 = "http://unlimited4-cl.dps.live/c9/c9.smil/c9/livestream1/chunks.m3u8?nimblesessionid=13746568";
+  				      var canal13= "http://csm-e-saw1-8.yospace.13.cl/csm/live/108031140/4.m3u8";
+  				      var chv = "http://live.hls.http.chv.ztreaming.com/chvhddesktop/chvHi.m3u8";
+  				var canal;
+  				if(this.id=="1"){
+  				canal = canal9;
+  				}
+  				if(this.id=="3"){
+  				canal = chv;
+  				}
+  				ws.send(JSON.stringify({
+  				comando: 2,
+  				boolVideo: ":checked",
+  				boolGC: $("#boolGC").is("checked"),
+  				linkManual : canal,
+  				gcManual: $("#gcManual").val()
+  				}));
+  			});
       			function playManual(){
       				var video = this.parentNode.previousElementSibling.firstChild.textContent;
       				ws.send(JSON.stringify({

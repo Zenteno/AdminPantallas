@@ -14,7 +14,7 @@
 				<!-- Default box -->
 				<div class="box">
 					<div class="box-header with-border">
-						<h3 class="box-title">gestion de videos</h3>
+						<h3 class="box-title">Gestión de videos</h3>
 
 						<div class="box-tools pull-right">
 							<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -65,6 +65,63 @@
 						</tbody>
 					</table>
 				</div>
+					</div>
+					<!-- /.box-body -->
+				</div>
+				<!-- /.box -->
+
+				<div class="box">
+					<div class="box-header with-border">
+						<h3 class="box-title">Gestión de Titulos y Streaming</h3>
+
+						<div class="box-tools pull-right">
+							<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+								<i class="fa fa-minus"></i></button>
+							<button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+								<i class="fa fa-times"></i></button>
+						</div>
+					</div>
+					<div class="box-body">
+					<h3>GC Manual</h3>
+					<div class="input-group">
+						<span class="input-group-addon">
+						<input type="checkbox" aria-label="..." id="boolGC">
+						</span>
+						<input type="text" class="form-control" aria-label="..." id="gcManual">
+					</div>
+					<h3>Link Video Manual</h3>
+					<div class="input-group">
+						<span class="input-group-addon">
+							<input type="checkbox" aria-label="..." id="boolVideo">
+						</span>
+						<input type="text" class="form-control" aria-label="..."/ id="linkManual">
+					</div>
+					<br>
+					<button class="btn button" id="config">Enviar Configuración</button>
+
+					</div>
+					<!-- /.box-body -->
+				</div>
+				<!-- /.box -->
+
+				<div class="box">
+					<div class="box-header with-border">
+						<h3 class="box-title">Canales</h3>
+
+						<div class="box-tools pull-right">
+							<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+								<i class="fa fa-minus"></i></button>
+							<button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+								<i class="fa fa-times"></i></button>
+						</div>
+					</div>
+					<div class="box-body">
+					<br>
+					<button class="btn btn-info btn-canal" id="1">Canal 9</button>
+					<button class="btn btn-info btn-canal" id="3">Canal CHV</button>
+
+
+
 					</div>
 					<!-- /.box-body -->
 				</div>
