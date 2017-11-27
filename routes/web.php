@@ -1,7 +1,5 @@
 <?php
 
-
-use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,19 +12,29 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::group(['middleware' => 'auth'], function () {
+    //    Route::get('/link1', function ()    {
+//        // Uses Auth Middleware
+//    });
+
+    //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
+    #adminlte_routes
+});
+
+Route::get('/home', function () {
 	$files = File::allFiles("./storage/Videos/Completo");
 	$arreglo = [];
 	foreach ($files as $file)
 	    $arreglo[]=$file->getFilename();
-
 	$files = File::allFiles("./storage/Videos/1");
 	$arreglo1 = [];
 	foreach ($files as $file)
 	    $arreglo1[]=$file->getFilename();
-
-	return view('welcome')->with(["repo" => $arreglo, "personal"=>$arreglo1]);
+	return view('vendor.adminlte.home1')->with(["repo" => $arreglo, "personal"=>$arreglo1]);
 })->middleware('auth');
-
 
 Route::post('/archivos', function(Request $request){
 	if ($request->hasFile('archivos')) {
@@ -36,14 +44,10 @@ Route::post('/archivos', function(Request $request){
 		return ["success"=>true, "nombre"=>$nombre];
 	}
 	return;
-
 });
 Route::post('/copiar', function(Request $request){
 	$archivo = $request["archivo"];
 	File::copy("./storage/Videos/Completo/".$archivo, "./storage/Videos/1/".$archivo);
 	return $archivo;
 });
-
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
