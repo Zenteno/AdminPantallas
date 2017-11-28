@@ -22,7 +22,6 @@
 
 
                 @if (Auth::guest())
-                    <li><a href="{{ url('/register') }}">{{ trans('adminlte_lang::message.register') }}</a></li>
                     <li><a href="{{ url('/login') }}">{{ trans('adminlte_lang::message.login') }}</a></li>
                 @else
                     <!-- User Account Menu -->
@@ -42,6 +41,17 @@
                                     {{ Auth::user()->name }}
                                     <small>{{ Auth::user()->email }}</small>
                                 </p>
+                            </li>
+                            <!-- Menu Body -->
+                            <li class="user-body">
+                                <div class="col-xs-4 text-center">
+
+                                <div class="col-xs-4 text-center">
+
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                  
+                                </div>
                             </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">

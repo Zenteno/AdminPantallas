@@ -8,10 +8,11 @@
     <link href="{{ asset('/css/all.css') }}" rel="stylesheet" type="text/css" />
 
       <!-- REVISAR ESTO !! xD -->
+
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/jquery.ui.widget.js"></script>
-		<script type="text/javascript" src="js/jquery.fileupload.js"></script>
+		<script type="text/javascript" src="{{ asset('/js/jquery.fileupload.js') }}"></script>
       <!-- --------------------- -->
     <script>
         //See https://laracasts.com/discuss/channels/vue/use-trans-in-vuejs

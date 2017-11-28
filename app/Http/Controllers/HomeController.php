@@ -41,7 +41,7 @@ class HomeController extends Controller
       $arreglo1 = [];
       foreach ($files as $file)
           $arreglo1[]=$file->getFilename();
-      return view('vendor.adminlte.home')->with(["repo" => $arreglo, "personal"=>$arreglo1]);
+      return view('adminlte::home')->with(["repo" => $arreglo, "personal"=>$arreglo1]);
         //return view('adminlte::home');
     }
    public function archivo(Request $request)

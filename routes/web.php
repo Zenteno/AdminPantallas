@@ -24,7 +24,7 @@ Route::group(['middleware' => 'auth'], function () {
     #adminlte_routes
 });
 
-Route::get('home', 'HomeController@index')->middleware('auth');
+Route::get('/home', 'HomeController@index');
 
 Route::post('/archivos', 'HomeController@archivo');
 Route::post('/copiar', 'HomeController@copiar');
