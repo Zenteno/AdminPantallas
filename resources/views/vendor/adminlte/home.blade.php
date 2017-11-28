@@ -118,7 +118,8 @@
 					<div class="box-body">
 					<br>
 					<button class="btn btn-info btn-canal" id="1">Canal 9</button>
-					<button class="btn btn-info btn-canal" id="3">Canal CHV</button>
+					<button class="btn btn-info btn-canal" id="3">Canal mega</button>
+					<button class="btn btn-info btn-canal" id="2">Canal tvu</button>
 
 
 

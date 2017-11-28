@@ -5,7 +5,7 @@
 <script src="{{ url (mix('/js/app.js')) }}" type="text/javascript"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery.ui.widget.js"></script>
-<script type="text/javascript" src="{{ asset('/js/jquery.fileupload.js') }}"></script>
+<script type="text/javascript" src="js/jquery.fileupload.js"></script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
       Both of these plugins are recommended to enhance the
       user experience. Slimscroll is required when using the
@@ -76,15 +76,18 @@
       			});
 
           $(".btn-canal").click(function(){
-  				      var canal9 = "http://unlimited4-cl.dps.live/c9/c9.smil/c9/livestream1/chunks.m3u8?nimblesessionid=13746568";
-  				      var canal13= "http://csm-e-saw1-8.yospace.13.cl/csm/live/108031140/4.m3u8";
-  				      var chv = "http://live.hls.http.chv.ztreaming.com/chvhddesktop/chvHi.m3u8";
+  				      var canal9 = "http://unlimited2-cl.dps.live/c9/c9.smil/playlist.m3u8";
+  				      var mega= "http://mdstrm.com/live-stream-playlist/561430ae330428c223687e1e.m3u8";
+  				      var tvu = "http://unlimited6-cl.dps.live/tvu/tvu.smil/playlist.m3u8";
   				var canal;
   				if(this.id=="1"){
   				canal = canal9;
   				}
   				if(this.id=="3"){
-  				canal = chv;
+  				canal = mega;
+  				}
+          if(this.id=="2"){
+  				canal = tvu;
   				}
   				ws.send(JSON.stringify({
   				comando: 2,
