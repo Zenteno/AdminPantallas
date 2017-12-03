@@ -9,22 +9,15 @@
 
 	<div class="container-fluid spark-screen">
 		<div class="row">
-			<div class="col-md-8 col-md-offset-2">
+			<div class="col-md-12">
 
 				<!-- Default box -->
 				<div class="box">
 					<div class="box-header with-border">
 						<h3 class="box-title">Gestión de videos</h3>
-
-						<div class="box-tools pull-right">
-							<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-								<i class="fa fa-minus"></i></button>
-							<button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-								<i class="fa fa-times"></i></button>
-						</div>
 					</div>
 					<div class="box-body">
-						<div class="col-sm-3 sidenav">
+						<div class="col-sm-6 sidenav">
 					<h4>Videos Disponibles</h4>
 					<span class="glyphicon glyphicon-plus fileinput-button" >
 						<input id="fileupload" type="file" name="archivos[]" multiple>
@@ -41,7 +34,7 @@
 
 					<br>
 				</div>
-				<div class="col-sm-3 sidenav">
+				<div class="col-sm-6 sidenav">
 					<h4>Videos Cargados</h4>
 					<table class="table table-striped">
 						<thead>
@@ -77,24 +70,22 @@
 						<div class="box-tools pull-right">
 							<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
 								<i class="fa fa-minus"></i></button>
-							<button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-								<i class="fa fa-times"></i></button>
 						</div>
 					</div>
 					<div class="box-body">
-					<h3>GC Manual</h3>
+					<h3>Titular Principal</h3>
 					<div class="input-group">
 						<span class="input-group-addon">
 						<input type="checkbox" aria-label="..." id="boolGC">
 						</span>
-						<input type="text" class="form-control" aria-label="..." id="gcManual">
+						<input placeholder="Ingrese texto a mostrar en seccion de titular Principal" type="text" class="form-control" aria-label="..." id="gcManual">
 					</div>
 					<h3>Link Video Manual</h3>
 					<div class="input-group">
 						<span class="input-group-addon">
 							<input type="checkbox" aria-label="..." id="boolVideo">
 						</span>
-						<input type="text" class="form-control" aria-label="..."/ id="linkManual">
+						<input placeholder="Pegue aqui su link de trasmicion streaming (m3u8)"type="text" class="form-control" aria-label="..."/ id="linkManual">
 					</div>
 					<br>
 					<button class="btn button" id="config">Enviar Configuración</button>
@@ -106,13 +97,11 @@
 
 				<div class="box">
 					<div class="box-header with-border">
-						<h3 class="box-title">Canales</h3>
+						<h3 class="box-title">Canales en Vivo</h3>
 
 						<div class="box-tools pull-right">
 							<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
 								<i class="fa fa-minus"></i></button>
-							<button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-								<i class="fa fa-times"></i></button>
 						</div>
 					</div>
 					<div class="box-body">

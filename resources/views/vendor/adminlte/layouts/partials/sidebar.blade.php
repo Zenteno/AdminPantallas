@@ -23,7 +23,9 @@
             <li class="header">Menú</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="{{ url('home') }}"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
-            <li><a href="#"><i class='fa fa-link'></i> <span>"menú en desarrollo"</span></a></li>
+            <li><a href="{{url('videos')}}"><i class='fa fa-link'></i> <span>Gestión de Videos</span></a></li>
+            <li><a href="{{url('titulos')}}"><i class='fa fa-link'></i> <span>Gestión de Titulos y GC</span></a></li>
+            <li><a href="{{url('canales')}}"><i class='fa fa-link'></i> <span>Canales en Vivo</span></a></li>
 
         </ul><!-- /.sidebar-menu -->
     </section>

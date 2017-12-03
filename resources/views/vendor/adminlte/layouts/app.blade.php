@@ -38,7 +38,10 @@ desired effect
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
 
-        @include('adminlte::layouts.partials.contentheader')
+      @section('contentheader')
+          @include('adminlte::layouts.partials.contentheader')
+      @show
+
 
         <!-- Main content -->
         <section class="content">

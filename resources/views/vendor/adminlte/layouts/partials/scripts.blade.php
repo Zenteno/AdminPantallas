@@ -90,11 +90,9 @@
   				canal = tvu;
   				}
   				ws.send(JSON.stringify({
-  				comando: 2,
-  				boolVideo: ":checked",
-  				boolGC: $("#boolGC").is("checked"),
-  				linkManual : canal,
-  				gcManual: $("#gcManual").val()
+  				comando: 5,
+          boolVideo = "checked";
+  				linkCanal : canal,
   				}));
   			});
       			function playManual(){
