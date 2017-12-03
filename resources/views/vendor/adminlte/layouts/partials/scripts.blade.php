@@ -74,27 +74,62 @@
       					}
       				));
       			});
-
+            // Envio de señal streaming para canales
           $(".btn-canal").click(function(){
-  				      var canal9 = "http://unlimited2-cl.dps.live/c9/c9.smil/playlist.m3u8";
-  				      var mega= "http://mdstrm.com/live-stream-playlist/561430ae330428c223687e1e.m3u8";
-  				      var tvu = "http://unlimited6-cl.dps.live/tvu/tvu.smil/playlist.m3u8";
-  				var canal;
-  				if(this.id=="1"){
-  				canal = canal9;
-  				}
-  				if(this.id=="3"){
-  				canal = mega;
-  				}
-          if(this.id=="2"){
-  				canal = tvu;
-  				}
-  				ws.send(JSON.stringify({
-  				comando: 5,
-          boolVideo = "checked";
-  				linkCanal : canal,
+  				 var canal9 = "http://unlimited2-cl.dps.live/c9/c9.smil/playlist.m3u8";
+  			   var mega= "http://mdstrm.com/live-stream-playlist/561430ae330428c223687e1e.m3u8";
+  				 var tvu = "http://unlimited6-cl.dps.live/tvu/tvu.smil/playlist.m3u8";
+  				 var canal;
+  				 if(this.id=="1"){
+  				   canal = canal9;
+  				 }
+  				 if(this.id=="3"){
+  				  canal = mega;
+  				 }
+           if(this.id=="2"){
+  				  canal = tvu;
+  				 }
+  				 ws.send(JSON.stringify({
+  				 comando: 5,
+           boolVideo : ":checked",
+  				 linkCanal : canal,
   				}));
-  			});
+  		 	 });
+
+
+         $(".btn-sub").click(function(){
+           switch (this.id) {
+             case "btnizq":
+             ws.send(JSON.stringify(
+               {
+                 comando: 6,
+                 boolGCsub: $('#checkizquierd').is(":checked"),
+                 subtitulo: $("#izquierda").val(),
+               }
+             ));
+               break;
+            case "btncen":
+            ws.send(JSON.stringify(
+              {
+                comando: 7,
+                boolGCsub: $('#checkicentral').is(":checked"),
+                subtitulo: $("#centro").val(),
+              }
+            ));
+              break;
+            case "btnder":
+            ws.send(JSON.stringify(
+              {
+                comando: 8,
+                boolGCsub: $('#checkderecha').is(":checked"),
+                subtitulo: $("#derecha").val(),
+              }
+            ));
+                break;
+           }
+         });
+
+         //funciones de play
       			function playManual(){
       				var video = this.parentNode.previousElementSibling.firstChild.textContent;
       				ws.send(JSON.stringify({

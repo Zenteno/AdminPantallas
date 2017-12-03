@@ -22,8 +22,6 @@
   <button class="btn btn-primary btn-canal" id="3">Canal mega</button>
   <button class="btn btn-primary btn-canal" id="2">Canal tvu</button>
 
-
-
   </div>
   <!-- /.box-body -->
 </div>

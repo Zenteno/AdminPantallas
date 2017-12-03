@@ -12,7 +12,7 @@
 			<!-- Default box -->
 				<div class="box box-primary">
 					<div class="box-header with-border">
-						<h3 class="box-title">Gestión de Titular y Streaming</h3>
+						<h3 class="box-title">Gestión de Titular</h3>
 
 						<div class="box-tools pull-right">
 							<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -27,16 +27,8 @@
           </span>
 						<input placeholder="Ingrese texto a mostrar en seccion de titular Principal" type="text" class="form-control" aria-label="..." id="gcManual">
 					</div>
-					<h3>Link Video Manual</h3>
-					<div class="input-group">
-						<span class="input-group-addon">
-							<input type="checkbox" aria-label="..." id="boolVideo">
-						</span>
-						<input placeholder="Pegue aqui su link de trasmicion streaming (m3u8)"type="text" class="form-control" aria-label="..."/ id="linkManual">
-					</div>
 					<br>
-					<button class="btn btn-primary button" id="config">Enviar Configuración</button>
-
+          <button class="btn btn-primary button" id="streaming">Enviar Titulo Principal</button>
 					</div>
 					<!-- /.box-body -->
 				</div>
@@ -60,7 +52,7 @@
           </span>
 						<input placeholder="Ingrese texto a mostrar en sección de titulo izquierda" type="text" class="form-control" aria-label="..." id="izquierda">
 						<span class="input-group-btn">
-							<button class="btn btn-primary btn-flat" id="btnizq">enviar</button>
+							<button class="btn btn-primary btn-flat btn-sub" id="btnizq">enviar</button>
         		</span>
 					</div>
 					<h5>Título central</h5>
@@ -70,7 +62,7 @@
           </span>
 						<input placeholder="Ingrese texto a mostrar en sección de titulo central" type="text" class="form-control" aria-label="..." id="centro">
 						<span class="input-group-btn">
-							<button class="btn btn-primary btn-flat" id="btncen">enviar</button>
+							<button class="btn btn-primary btn-flat btn-sub" id="btncen">enviar</button>
         		</span>
 					</div>
 					<h5>Título derecha</h5>
@@ -80,7 +72,7 @@
           	</span>
 						<input placeholder="Ingrese texto a mostrar en sección de titulo derecha" type="text" class="form-control" aria-label="..." id="derecha">
 						<span class="input-group-btn">
-							<button class="btn btn-primary btn-flat" id="btnder">enviar</button>
+							<button class="btn btn-primary btn-flat btn-sub" id="btnder">enviar</button>
         		</span>
 					</div>
 					<!-- /.box-body -->
