@@ -14,7 +14,7 @@
       <script type="text/javascript">
       			var ws;
       			$(document).ready(function(){
-      			    ws = new WebSocket("ws://190.121.26.164:8000");
+      			    ws = new WebSocket("ws://190.121.26.164:8080");
       			});
       			$(".vT").dblclick(dblclick);
       			var url = '/archivos';
@@ -25,6 +25,7 @@
       					_token : "{{ csrf_token() }}"
       				},
       				done: function (e, data) {
+                console.log(data);
       					$("#totales").append('<li><a class="vT" href="#">'+data.result.nombre+'</a></li>');
       					$(".vT").unbind("dblclick");
       					$(".vT").dblclick(dblclick);
