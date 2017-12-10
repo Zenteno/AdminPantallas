@@ -14,7 +14,7 @@
       <script type="text/javascript">
       			var ws;
       			$(document).ready(function(){
-      			    ws = new WebSocket("ws://190.121.26.164:8080");
+      			    ws = new WebSocket("ws://201.217.242.94:8080");
       			});
       			$(".vT").dblclick(dblclick);
       			var url = '/archivos';
