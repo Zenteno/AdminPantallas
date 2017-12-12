@@ -65,6 +65,7 @@
       					});
       				}
       			$("#config").click(function(){
+              console.log($("boolGC").is(':checked'));
       				ws.send(JSON.stringify(
       					{
       						comando: 2,
@@ -75,36 +76,59 @@
       					}
       				));
       			});
+            //envio de titulo principal vista: titulos.blade.php
+            $("#envtitulo").click(function(){
+              console.log($("#boolGC").is(':checked'));
+              console.log( $("#gcManual").val());
+      				ws.send(JSON.stringify(
+      					{
+      						comando: 2,
+      						boolVideo: false,
+      						boolGC: $("#boolGC").is(':checked') ,
+      						linkManual: false,
+      						gcManual: $("#gcManual").val()
+      					}
+      				));
+      			});
             // Envio de señal streaming para canales
           $(".btn-canal").click(function(){
+            console.log(this.id);
   				 var canal9 = "http://unlimited2-cl.dps.live/c9/c9.smil/playlist.m3u8";
   			   var mega= "http://mdstrm.com/live-stream-playlist/561430ae330428c223687e1e.m3u8";
   				 var tvu = "http://unlimited6-cl.dps.live/tvu/tvu.smil/playlist.m3u8";
-  				 var canal;
-  				 if(this.id=="1"){
-  				   canal = canal9;
-  				 }
-  				 if(this.id=="3"){
-  				  canal = mega;
-  				 }
-           if(this.id=="2"){
-  				  canal = tvu;
-  				 }
-  				 ws.send(JSON.stringify({
-  				 comando: 5,
-           boolVideo : ":checked",
-  				 linkCanal : canal,
-  				}));
+           switch (this.id) {
+             case 1:
+              ws.send(JSON.stringify({
+                comando: 5,
+                boolVideo : true,
+                linkCanal : canal9,
+              }));
+               break;
+               case 2:
+                ws.send(JSON.stringify({
+                  comando: 5,
+                  boolVideo : true,
+                  linkCanal : tvu,
+                }));
+                 break;
+                 case 3:
+                  ws.send(JSON.stringify({
+                   comando: 5,
+                   boolVideo : true,
+                   linkCanal : mega,
+                  }));
+                   break;
   		 	 });
 
-
+         // botones de subitulos izq, centro y derecha.
          $(".btn-sub").click(function(){
+           console.log(this.id);
            switch (this.id) {
              case "btnizq":
              ws.send(JSON.stringify(
                {
                  comando: 6,
-                 boolGCsub: $('#checkizquierd').is(":checked"),
+                 boolGCsub: $('#checkizquierda').is(":checked"),
                  subtitulo: $("#izquierda").val(),
                }
              ));
@@ -113,7 +137,7 @@
             ws.send(JSON.stringify(
               {
                 comando: 7,
-                boolGCsub: $('#checkicentral').is(":checked"),
+                boolGCsub: $('#checkcentral').is(":checked"),
                 subtitulo: $("#centro").val(),
               }
             ));

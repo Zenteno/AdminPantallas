@@ -28,7 +28,7 @@
 						<input placeholder="Ingrese texto a mostrar en seccion de titular Principal" type="text" class="form-control" aria-label="..." id="gcManual">
 					</div>
 					<br>
-          <button class="btn btn-primary button" id="streaming">Enviar Titulo Principal</button>
+          <button class="btn btn-primary button" id="envtitulo">Enviar Titulo Principal</button>
 					</div>
 					<!-- /.box-body -->
 				</div>
