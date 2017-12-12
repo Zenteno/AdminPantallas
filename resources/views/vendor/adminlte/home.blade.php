@@ -105,15 +105,24 @@
 						</div>
 					</div>
 					<div class="box-body">
+				  <br>
+
+					<ul style="list-style-type: none;">
+						<li><input type="radio" name="canal" id="canal1" value="canal1">
+						<label for="canal9">CANAL 9</label></li>
+						<li><input type="radio" name="canal" id="canal2" value="canal2">
+				    <label for="tvu">TVU</label></li>
+						<li><input type="radio" name="canal" id="canal3" value="canal3">
+				    <label for="mega">MEGA</label></li>
+						<li><input type="radio" name="canal" id="lista" value="lista">
+				    <label for="lista">Volver a la Lista</label></li>
+					</ul>
 					<br>
-					<button class="btn btn-info btn-canal" id="1">Canal 9</button>
-					<button class="btn btn-info btn-canal" id="3">Canal mega</button>
-					<button class="btn btn-info btn-canal" id="2">Canal tvu</button>
-
-
-
+					<div class="box-footer with-border">
+								<button class="btn btn-success" id="enviar-canal">Enviar Canal</button>
 					</div>
-					<!-- /.box-body -->
+				  </div>
+				  <!-- /.box-body -->
 				</div>
 				<!-- /.box -->
 
