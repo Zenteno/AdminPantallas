@@ -18,5 +18,5 @@ class SimpleEcho(WebSocket):
     	usuarios.remove(self)
         print(self.address, 'closed')
 
-server = SimpleWebSocketServer('127.0.0.1', 8000, SimpleEcho)
+server = SimpleWebSocketServer('127.0.0.1', 8080, SimpleEcho)
 server.serveforever()

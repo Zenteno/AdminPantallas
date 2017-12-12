@@ -29,8 +29,8 @@ Route::get('/home', 'HomeController@index');
 Route::post('/archivos', 'HomeController@archivo');
 Route::post('/copiar', 'HomeController@copiar');
 
-Route::get('/videos', 'videosController@index');
-Route::get('/titulos', 'titulosController@index');
-Route::get('/canales', 'canalesController@index');
+Route::get('/videos', 'VideosController@index');
+Route::get('/titulos', 'TitulosController@index');
+Route::get('/canales', 'CanalesController@index');
 Route::resource('/profile', 'EditController');
 Auth::routes();
