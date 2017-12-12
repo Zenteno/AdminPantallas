@@ -118,6 +118,7 @@
                    linkCanal : mega,
                   }));
                    break;
+            }
   		 	 });
 
          // botones de subitulos izq, centro y derecha.
