@@ -23,7 +23,7 @@
 					<h3>Titular Principal</h3>
 					<div class="input-group">
 						<span class="input-group-addon">
-						<input type="checkbox" aria-label="..." id="boolGC">
+						<input type="checkbox" aria-label="..." id="boolTitulo">
           </span>
 						<input placeholder="Ingrese texto a mostrar en seccion de titular Principal" type="text" class="form-control" aria-label="..." id="gcManual">
 					</div>

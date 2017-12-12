@@ -99,7 +99,7 @@
             <span class="input-group-addon">
               <input type="checkbox" aria-label="..." id="boolVideo">
             </span>
-            <input placeholder="Pegue aqui su link de trasmicion streaming (m3u8)"type="text" class="form-control" aria-label="..."/ id="linkManual">
+            <input placeholder="Pegue aqui su link de trasmicion streaming (m3u8)"type="text" class="form-control" aria-label="..." id="linkManual">
           </div>
           <br>
           <button class="btn btn-primary button" id="streaming">Enviar Señal Streaming</button>

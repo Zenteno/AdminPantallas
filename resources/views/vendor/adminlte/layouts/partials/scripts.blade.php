@@ -76,48 +76,73 @@
       					}
       				));
       			});
-            //envio de titulo principal vista: titulos.blade.php
-            $("#envtitulo").click(function(){
-              console.log($("#boolGC").is(':checked'));
-              console.log( $("#gcManual").val());
+            //LInk video manual sin cambio de Titulos
+            $("#streaming").click(function(){
+              console.log($("boolVideo").is(':checked'));
       				ws.send(JSON.stringify(
       					{
-      						comando: 2,
-      						boolVideo: false,
-      						boolGC: $("#boolGC").is(':checked') ,
-      						linkManual: false,
-      						gcManual: $("#gcManual").val()
+      						comando: 10,
+      						boolVideo: $("#boolVideo").is(':checked'),
+      						linkManual: $("#linkManual").val(),
       					}
       				));
       			});
+            //funciones de play
+         			function playManual(){
+         				var video = this.parentNode.previousElementSibling.firstChild.textContent;
+         				ws.send(JSON.stringify({
+         					comando: 3,
+         					archivo : video
+         				}));
+         			}
+         			function remover(){
+         				var video = this.parentNode.previousElementSibling.firstChild.textContent;
+         				ws.send(JSON.stringify({
+         					comando: 4,
+         					archivo : video
+         				}));
+         				$(this).html();
+         			}
+         			$(".glyphicon-play").click(playManual);
+         			$(".glyphicon-remove").click(remover);
             // Envio de señal streaming para canales
-          $(".btn-canal").click(function(){
-            console.log(this.id);
+          $("#enviar-canal").click(function(){
   				 var canal9 = "http://unlimited2-cl.dps.live/c9/c9.smil/playlist.m3u8";
   			   var mega= "http://mdstrm.com/live-stream-playlist/561430ae330428c223687e1e.m3u8";
   				 var tvu = "http://unlimited6-cl.dps.live/tvu/tvu.smil/playlist.m3u8";
-           switch (this.id) {
-             case 1:
+           switch ($('input:radio[type=radio]:checked').val()) {
+             case 'canal1':
+             console.log("caso:", $('input:radio[type=radio]:checked').val());
               ws.send(JSON.stringify({
                 comando: 5,
-                boolVideo : true,
+                boolVideo : $('#canal1').is(':checked'),
                 linkCanal : canal9,
               }));
-               break;
-               case 2:
+             break;
+             case 'canal2':
+              console.log("enviando canal");
                 ws.send(JSON.stringify({
                   comando: 5,
-                  boolVideo : true,
+                  boolVideo : $('#canal2').is(':checked'),
                   linkCanal : tvu,
                 }));
-                 break;
-                 case 3:
+             break;
+             case 'canal3':
+               console.log("enviando canal");
                   ws.send(JSON.stringify({
                    comando: 5,
-                   boolVideo : true,
+                   boolVideo : $('#canal3').is(':checked'),
                    linkCanal : mega,
                   }));
-                   break;
+            break;
+            case 'lista':
+              console.log("volviendo a la lista");
+                 ws.send(JSON.stringify({
+                  comando: 5,
+                  boolVideo : null,
+                  linkCanal : false,
+                 }));
+           break;
             }
   		 	 });
 
@@ -154,24 +179,16 @@
                 break;
            }
          });
-
-         //funciones de play
-      			function playManual(){
-      				var video = this.parentNode.previousElementSibling.firstChild.textContent;
-      				ws.send(JSON.stringify({
-      					comando: 3,
-      					archivo : video
-      				}));
-      			}
-      			function remover(){
-      				var video = this.parentNode.previousElementSibling.firstChild.textContent;
-      				ws.send(JSON.stringify({
-      					comando: 4,
-      					archivo : video
-      				}));
-      				$(this).html();
-      			}
-      			$(".glyphicon-play").click(playManual);
-      			$(".glyphicon-remove").click(remover);
-
-      		</script>
+         //envio de titulo principal vista: titulos.blade.php
+         $("#envtitulo").click(function(){
+           console.log($("#boolTitulo").is(':checked'));
+           console.log( $("#gcManual").val());
+           ws.send(JSON.stringify(
+             {
+               comando: 9,
+               gcManual: $("#gcManual").val(),
+               boolGC: $("#boolTitulo").is(':checked') ,
+             }
+           ));
+         });
+  </script>
