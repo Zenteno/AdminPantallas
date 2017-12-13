@@ -25,7 +25,7 @@
 		<li><input type="radio" name="canal" id="canal2" value="canal2">
     <label for="tvu">TVU</label></li>
 		<li><input type="radio" name="canal" id="canal3" value="canal3">
-    <label for="mega">MEGA</label></li>
+    <label for="tvn">TVN</label></li>
 		<li><input type="radio" name="canal" id="lista" value="lista">
     <label for="lista">Volver a la Lista</label></li>
 	</ul>

@@ -82,7 +82,7 @@
       				ws.send(JSON.stringify(
       					{
       						comando: 10,
-      						boolVideo: $("#boolVideo").is(':checked'),
+      						boolVideo: $("#boolVide").is(':checked'),
       						linkManual: $("#linkManual").val(),
       					}
       				));
@@ -108,7 +108,7 @@
             // Envio de señal streaming para canales
           $("#enviar-canal").click(function(){
   				 var canal9 = "http://unlimited2-cl.dps.live/c9/c9.smil/playlist.m3u8";
-  			   var mega= "http://mdstrm.com/live-stream-playlist/561430ae330428c223687e1e.m3u8";
+  			   var tvn= "http://mdstrm.com/live-stream-playlist/57d1a22064f5d85712b20dab.m3u8";
   				 var tvu = "http://unlimited6-cl.dps.live/tvu/tvu.smil/playlist.m3u8";
            switch ($('input:radio[type=radio]:checked').val()) {
              case 'canal1':
@@ -132,7 +132,7 @@
                   ws.send(JSON.stringify({
                    comando: 5,
                    boolVideo : $('#canal3').is(':checked'),
-                   linkCanal : mega,
+                   linkCanal : tvn,
                   }));
             break;
             case 'lista':
