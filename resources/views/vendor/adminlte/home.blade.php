@@ -6,7 +6,6 @@
 
 
 @section('main-content')
-
 	<div class="container-fluid spark-screen">
 		<div class="row">
 			<div class="col-md-12">
@@ -48,8 +47,6 @@
 								<tr>
 									<td>{{ $video }}</td>
 									<td>
-										<span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;&nbsp;&nbsp;
-										<span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;&nbsp;&nbsp;
 										<span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;&nbsp;
 										<span class="glyphicon glyphicon-play"></span>
 									</td>

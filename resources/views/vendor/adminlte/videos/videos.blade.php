@@ -27,7 +27,9 @@
         </span>
         &nbsp;
 
-        <span class="glyphicon glyphicon-minus"></span>
+        <span class="glyphicon glyphicon-minus">
+
+				</span>
         <ul class="nav nav-pills nav-stacked" id="totales">
           @foreach ($repo as $video)
             <li><a href="#" class="vT">{{ $video }}</a></li>
@@ -51,8 +53,6 @@
               <tr>
                 <td>{{ $video }}</td>
                 <td>
-                  <span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;&nbsp;&nbsp;
-                  <span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;&nbsp;&nbsp;
                   <span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;&nbsp;
                   <span class="glyphicon glyphicon-play .btn.btn-app"></span>
                 </td>
@@ -113,4 +113,5 @@
 
   </div>
 </div>
+
 @endsection

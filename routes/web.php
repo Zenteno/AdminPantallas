@@ -28,6 +28,7 @@ Route::get('/home', 'HomeController@index');
 
 Route::post('/archivos', 'HomeController@archivo');
 Route::post('/copiar', 'HomeController@copiar');
+Route::post('/borrar', 'VideosController@borrar');
 
 Route::get('/videos', 'VideosController@index');
 Route::get('/titulos', 'TitulosController@index');

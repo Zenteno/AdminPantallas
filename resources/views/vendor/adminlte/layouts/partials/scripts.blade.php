@@ -46,16 +46,15 @@
       						archivo: this.text
       					},
       					function( data ) {
+                  console.log("enviando comando 1");
       						ws.send(JSON.stringify({
       							comando : 1,
       							archivo : data
       						}));
-      						$("#personal").append(`<tr>
+      						$("#personal").append(`<tr id="`+data+`">
       								<td>`+data+`</td>
       								<td>
-      									<span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;&nbsp;&nbsp;
-      									<span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;&nbsp;&nbsp;
-      									<span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;&nbsp;
+                        <span class="glyphicon glyphicon-remove" id="borrar"></span>&nbsp;&nbsp;&nbsp;
       									<span class="glyphicon glyphicon-play"></span>
       								</td>
       							</tr>`);
@@ -78,11 +77,12 @@
       			});
             //LInk video manual sin cambio de Titulos
             $("#streaming").click(function(){
-              console.log($("boolVideo").is(':checked'));
+              console.log("dsfasdfadfasdf");
+              console.log($("#boolVideo").is(':checked'));
       				ws.send(JSON.stringify(
       					{
       						comando: 10,
-      						boolVideo: $("#boolVide").is(':checked'),
+      						boolVideo: $("#boolVideo").is(':checked'),
       						linkManual: $("#linkManual").val(),
       					}
       				));
@@ -96,15 +96,26 @@
          				}));
          			}
          			function remover(){
+                console.log("eliminando");
          				var video = this.parentNode.previousElementSibling.firstChild.textContent;
+                console.log(video);
          				ws.send(JSON.stringify({
          					comando: 4,
          					archivo : video
          				}));
          				$(this).html();
+                $.post( "/borrar",
+        					{
+        						_token : "{{ csrf_token() }}",
+        						archivo: this.parentNode.previousElementSibling.firstChild.textContent
+        					}, function(data){
+                    location.reload(true);
+                  });
+
          			}
          			$(".glyphicon-play").click(playManual);
          			$(".glyphicon-remove").click(remover);
+
             // Envio de señal streaming para canales
           $("#enviar-canal").click(function(){
   				 var canal9 = "http://unlimited2-cl.dps.live/c9/c9.smil/playlist.m3u8";

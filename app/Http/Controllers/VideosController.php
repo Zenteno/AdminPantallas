@@ -61,6 +61,15 @@ class VideosController extends Controller
       	File::copy("./storage/Videos/Completo/".$archivo, "./storage/Videos/1/".$archivo);
       	return $archivo;
       }
+      public function borrar(Request $request){
+        $archivo = $request["archivo"];
+        if(File::exists('./storage/Videos/1/'.$archivo)){
+          File::delete('./storage/Videos/1/'.$archivo);
+        }else{
+          dd('El archivo no existe.');
+        }
+        return $archivo;
+      }
 
 
 
