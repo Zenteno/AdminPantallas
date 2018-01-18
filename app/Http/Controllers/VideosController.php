@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use File;
+use App\video;
 
 class VideosController extends Controller
 {
@@ -30,7 +31,7 @@ class VideosController extends Controller
     public function index()
     {
       $files = File::allFiles("./storage/Videos/Completo");
-      $arreglo = [];
+      $arreglo = []; 
       foreach ($files as $file)
           $arreglo[]=$file->getFilename();
       $files = File::allFiles("./storage/Videos/1");
@@ -48,13 +49,7 @@ class VideosController extends Controller
 
      public function archivo(Request $request)
       {
-        if ($request->hasFile('archivos')) {
-      		$file = $request->file('archivos');
-      		$nombre = $file[0]->getClientOriginalName();
-      		$file[0]->storeAs('public/Videos/Completo',$nombre);
-      		return ["success"=>true, "nombre"=>$nombre];
-      	}
-      	return;
+            
       }
       public function copiar(Request $request){
         $archivo = $request["archivo"];
@@ -86,7 +81,21 @@ class VideosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       if ($request->hasFile('archivos')) {
+          $video = new video();
+          $video->us_id = \Auth::user()->id;
+          $file = $request->file('archivos');
+          $nombre = $file[0]->getClientOriginalName();
+          $video->vi_nombreViejo = $nombre;
+          $file[0]->storeAs('public/Videos/Completo',$nombre);
+        if($video->save()){
+           $video->vi_nombreNuevo = $video->id;
+           $video->save();            
+       } 
+          return ["success"=>true, "nombre"=>$nombre];
+        }
+        return;
+
     }
 
     /**

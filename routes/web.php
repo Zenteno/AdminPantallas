@@ -30,7 +30,8 @@ Route::post('/archivos', 'HomeController@archivo');
 Route::post('/copiar', 'HomeController@copiar');
 Route::post('/borrar', 'VideosController@borrar');
 
-Route::get('/videos', 'VideosController@index');
+Route::resource('/videos','VideosController');
+
 Route::get('/titulos', 'TitulosController@index');
 Route::get('/canales', 'CanalesController@index');
 Route::resource('/profile', 'EditController');

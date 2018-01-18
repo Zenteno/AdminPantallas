@@ -1,5 +1,5 @@
 @extends('adminlte::layouts.app')
-
+ 
 @section('htmlheader_title')
 	{{ trans('adminlte_lang::message.home') }}
 @endsection
@@ -22,14 +22,13 @@
         <div class="box-body">
           <div class="col-sm-6 sidenav">
         <h4>Videos Disponibles</h4>
+      {{ Form::Open(['route' => 'videos.store', 'method'=>'POST']) }}
         <span class="glyphicon glyphicon-plus fileinput-button" >
-          <input id="fileupload" type="file" name="archivos[]" multiple>
+          <a type="submit"> <input id="fileupload" type="file" name="archivos[]" multiple></a>
+          {{ Form::Close() }}
+
         </span>
         &nbsp;
-
-        <span class="glyphicon glyphicon-minus">
-
-				</span>
         <ul class="nav nav-pills nav-stacked" id="totales">
           @foreach ($repo as $video)
             <li><a href="#" class="vT">{{ $video }}</a></li>
