@@ -23674,3 +23674,30 @@ button.toast-close-button {
     width: 25em;
   }
 }
+/* alex inicio */
+.flat1 {
+  background-color: #c5bebe;
+}
+.hovCajitas{
+  transition: all .3s ease;
+  border-radius: 15px;
+}
+.hovCajitas:hover{
+  opacity: .8 !important;
+}
+.fullDiv {
+  width: 100% !important;
+  height: auto !important;
+}
+.inicioClienteDashboard{
+  margin-top: 10%;
+  margin-left: 10%;
+  width: 100%;
+}
+.inicioClienteDashboard a{
+  text-decoration: none !important;
+}
+.textoNegro {
+  color: #000 !important;
+  font-size: 2rem;
+}
