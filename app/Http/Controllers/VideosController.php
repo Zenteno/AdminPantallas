@@ -30,6 +30,7 @@ class VideosController extends Controller
      */
     public function index()
     {
+      $videos = video::orderBy('id','DESC')->where('us_id',\Auth::user()->id)->paginate(20);
       $files = File::allFiles("./storage/Videos/Completo");
       $arreglo = []; 
       foreach ($files as $file)
@@ -38,7 +39,7 @@ class VideosController extends Controller
       $arreglo1 = [];
       foreach ($files as $file)
           $arreglo1[]=$file->getFilename();
-        return view('adminlte::videos.videos')->with(["repo" => $arreglo, "personal"=>$arreglo1]);
+        return view('adminlte::videos.videos')->with(["repo" => $videos, "personal"=>$arreglo1]);
     }
 
     /**
@@ -49,6 +50,22 @@ class VideosController extends Controller
 
      public function archivo(Request $request)
       {
+         if ($request->hasFile('archivos')) {
+          $video = new video();
+          $video->us_id = \Auth::user()->id;
+          $file = $request->file('archivos');
+          $nombre = $file[0]->getClientOriginalName();
+          $video->vi_nombreViejo = $nombre; 
+        if($video->save()){
+           $video->vi_nombreNuevo = $video->id.'.mp4';
+              $ruta = $file[0]->storeAs('public/Videos/Completo',$video->vi_nombreNuevo); 
+              $video->vi_ruta = $ruta;
+           $video->save();      
+       } 
+       
+          return ["success"=>true, "nombre"=>$nombre];
+        }
+        return ;
             
       }
       public function copiar(Request $request){
@@ -56,6 +73,7 @@ class VideosController extends Controller
       	File::copy("./storage/Videos/Completo/".$archivo, "./storage/Videos/1/".$archivo);
       	return $archivo;
       }
+
       public function borrar(Request $request){
         $archivo = $request["archivo"];
         if(File::exists('./storage/Videos/1/'.$archivo)){
@@ -81,20 +99,7 @@ class VideosController extends Controller
      */
     public function store(Request $request)
     {
-       if ($request->hasFile('archivos')) {
-          $video = new video();
-          $video->us_id = \Auth::user()->id;
-          $file = $request->file('archivos');
-          $nombre = $file[0]->getClientOriginalName();
-          $video->vi_nombreViejo = $nombre;
-          $file[0]->storeAs('public/Videos/Completo',$nombre);
-        if($video->save()){
-           $video->vi_nombreNuevo = $video->id;
-           $video->save();            
-       } 
-          return ["success"=>true, "nombre"=>$nombre];
-        }
-        return;
+      //
 
     }
 
@@ -140,6 +145,11 @@ class VideosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $video = video::find($id);
+       $dir = public_path() . '\storage\Videos\Completo/';
+       $videox =$video->vi_nombreNuevo;
+       unlink($dir.$videox);
+        $video->delete();
+         return redirect()->route('videos.index');
     }
 }

@@ -9,6 +9,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use File;
 use App\video;
 /**
@@ -34,37 +35,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-      $files = File::allFiles("./storage/Videos/Completo");
-      $arreglo = [];
-      foreach ($files as $file)
-          $arreglo[]=$file->getFilename();
-      $files = File::allFiles("./storage/Videos/1");
-      $arreglo1 = [];
-      foreach ($files as $file)
-          $arreglo1[]=$file->getFilename();
-      return view('adminlte::home')->with(["repo" => $arreglo, "personal"=>$arreglo1]);
-        //return view('adminlte::home');
+      
+        return view('adminlte::home');
     }
-   public function archivo(Request $request)
-    {
- if ($request->hasFile('archivos')) {
-          $video = new video();
-          $video->us_id = \Auth::user()->id;
-          $file = $request->file('archivos');
-          $nombre = $file[0]->getClientOriginalName();
-          $video->vi_nombreViejo = $nombre;
-          $file[0]->storeAs('public/Videos/Completo',$nombre);
-        if($video->save()){
-           $video->vi_nombreNuevo = $video->id;
-           $video->save();            
-       } 
-          return ["success"=>true, "nombre"=>$nombre];
-        }
-        return;
-    }
-    public function copiar(Request $request){
-      $archivo = $request["archivo"];
-    	File::copy("./storage/Videos/Completo/".$archivo, "./storage/Videos/1/".$archivo);
-    	return $archivo;
-    }
+  
+
 }

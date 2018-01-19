@@ -17,6 +17,7 @@ class CreateVideosTable extends Migration
             $table->increments('id');
             $table->string('vi_nombreViejo');
             $table->string('vi_nombreNuevo')->nullable();
+            $table->string('vi_ruta');
             $table->integer('us_id')->unsigned();
             $table->foreign('us_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

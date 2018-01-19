@@ -47,6 +47,7 @@ desired effect
         <section class="content">
             <!-- Your Page Content Here -->
             @yield('main-content')
+            @yield('js');
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
 

@@ -26,12 +26,14 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/home', 'HomeController@index');
 
-Route::post('/archivos', 'HomeController@archivo');
-Route::post('/copiar', 'HomeController@copiar');
-Route::post('/borrar', 'VideosController@borrar');
+
+
 
 Route::resource('/videos','VideosController');
-
+Route::post('/archivos', 'VideosController@archivo');
+Route::post('/copiar', 'VideosController@copiar');
+Route::post('/borrar', 'VideosController@borrar');
+    Route::get('videos/{id}/destroy','VideosController@destroy')->name('VideosController.destroy');
 Route::get('/titulos', 'TitulosController@index');
 Route::get('/canales', 'CanalesController@index');
 Route::resource('/profile', 'EditController');
