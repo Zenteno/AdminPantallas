@@ -47,7 +47,7 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <a class="vT" href="#">
+                                            <a class="videoEnviar" href="#" video="{{ $video->id }}">
                                                 <span class="glyphicon glyphicon glyphicon-ok">
                                                 </span>
                                             </a>
@@ -80,12 +80,12 @@
                                 @foreach ($personal as $video)
                                 <tr>
                                     <td>
-                                        {{ $video }}
+                                        {{ $video->vi_nombreViejo }}
                                     </td>
                                     <td>
                                         <span class="glyphicon glyphicon-remove">
                                         </span>
-                                        <span class="glyphicon glyphicon-play .btn.btn-app">
+                                        <span class="glyphicon glyphicon-play .btn.btn-app" video="{{ $video->id }}">
                                         </span>
                                     </td>
                                 </tr>
