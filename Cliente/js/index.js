@@ -6,7 +6,6 @@ var i = 0;
 var j = 0;
 var c = 0;
 var reproductor = null;
-var db;
 var videos = [];
 var boolGC = false;
 var boolVideo = false;
@@ -17,13 +16,19 @@ var GCcen = false;
 var GCder = false;
 var linkVideo = false;
 var flag = true;
+var db = null;
+var adapter = null;
 
 $(document).ready(function() {
 	$.ajaxSetup({
 		timeout: 3000
 	});
+	adapter = new LocalStorage('db')
+  	db = low(adapter)
+  	db.defaults({ playlist: [] })
+  		.write()
 
-	db = new PouchDB('my_database');
+	//db = new PouchDB('baseDatos');
 	$("#time").clock({
 		"calendar":"false",
 		"seconds":"false"
@@ -35,6 +40,7 @@ $(document).ready(function() {
 			reproductor = player;
 			$.get( "http://190.121.26.164/local", function( data ) {
 				var datos = JSON.parse(data);
+				db.get('playlist').remove().write();
 				db.destroy().then(function(){
 					db = new PouchDB('my_database');
 					for(var t in datos){
@@ -49,28 +55,24 @@ $(document).ready(function() {
 					}
 				});
 			}).fail(function() {
-	    		db.allDocs({include_docs: true, descending: true}, function(err, doc) {
-					videos = doc;
-					reproducir();
-				});
-	  		});
+				videos = db.get('playlist').value();
+				reproducir();
+	    	});
 
 		}
 	});
-	var ws = new WebSocket("ws://192.168.10.10:8080");
+	var ws = new WebSocket("ws://201.217.242.94:8080");
+	//var ws = new WebSocket("ws://192.168.10.10:8080");
 	ws.onmessage = function(e){
 		var datos = JSON.parse(e.data);
 		var comando = parseInt(datos.comando);
 		switch(comando){
 			case 1:
-				db.post({
-					archivo: datos.archivo
-				}).then(function (response) {
-  					db.allDocs({include_docs: true, descending: true}, function(err, doc) {
-    					videos = doc;
-    				});
-				});
-				break;
+				db.get('playlist')
+  					.push({ archivo: datos.archivo+".mp4"})
+  					.write();
+  				videos = db.get('playlist').value();
+  				break;
 			case 2:
 				var flagGC=false;
 				var flagVideo = false;
@@ -177,18 +179,13 @@ function reproducir(){
 		if(boolVideo)
 			playManual(linkVideo);
 		else{
-			if(videos.total_rows>0){
-				reproductor.setSrc(videos.rows[j].doc.archivo);
+			if(videos.length>0){
+				reproductor.setSrc(videos[j].archivo);
 				reproductor.play();
 				j++;
-				if(j==videos.total_rows)
+				if(j==videos.length)
 					j=0;
 			}
-				reproductor.setSrc(lista[c]);
-				reproductor.play();
-				c++;
-				if (c==2)
-					c=0;
 		}
 	},1000);
 

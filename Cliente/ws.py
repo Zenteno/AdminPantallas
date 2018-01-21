@@ -10,9 +10,8 @@ def on_message(ws, message):
 		try:
 			dato = json.loads(message)
 			if dato["comando"] == 1:
-				url = "http://pantalla.test/api/descargar/"+dato["archivo"]
+				url = "http://201.217.242.94:8000/api/descargar/"+dato["archivo"]
 				filename = wget.download(url, out=carpeta)
-				print "\ntamos listos"
 			if dato["comando"] == 4:
 				os.remove(carpeta+dato["archivo"])
 		except Exception as e:
@@ -32,7 +31,7 @@ def on_open(ws):
 
 if __name__ == "__main__":
 	websocket.enableTrace(True)
-	ws = websocket.WebSocketApp("ws://192.168.10.10:8080",
+	ws = websocket.WebSocketApp("ws://201.217.242.94:8080",
 							  on_message = on_message,
 							  on_error = on_error,
 							  on_close = on_close)

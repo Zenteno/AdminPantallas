@@ -31,7 +31,7 @@ Route::get('/home', 'HomeController@index');
 
 Route::resource('/videos','VideosController');
 Route::get('/api/descargar/{id}','ApiController@descargar');
-Route::post('/archivos', 'VideosController@archivo');
+Route::post('/api/archivos', 'ApiController@archivo');
 Route::post('/copiar', 'VideosController@copiar');
 Route::post('/borrar', 'VideosController@borrar');
 Route::post('/enviar', 'VideosController@enviar');
