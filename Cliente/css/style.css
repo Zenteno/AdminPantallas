@@ -1,0 +1,286 @@
+/*===========================================================================
+    stylesheet by:
+    Leon Taveras (LeonimuZ) || http://about.me/lnz
+===========================================================================*/
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+#content {
+  display: block;
+  width: 100% !important;
+  height: 100% !important; /* For at least Firefox */
+  min-height: 100% !important;
+  min-width: 100% !important;
+  position:relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Roboto", sans-serif;
+}
+h1{
+  font-size: 27px !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+#player1{
+  display: block;
+
+}
+video{
+  width: 100%;
+
+
+}
+@font-face {
+    font-family: 'weather';
+    src: url('../font/artill_clean_icons.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.icon-0:before { content: ":"; }
+.icon-1:before { content: "p"; }
+.icon-2:before { content: "S"; }
+.icon-3:before { content: "Q"; }
+.icon-4:before { content: "S"; }
+.icon-5:before { content: "W"; }
+.icon-6:before { content: "W"; }
+.icon-7:before { content: "W"; }
+.icon-8:before { content: "W"; }
+.icon-9:before { content: "I"; }
+.icon-10:before { content: "W"; }
+.icon-11:before { content: "I"; }
+.icon-12:before { content: "I"; }
+.icon-13:before { content: "I"; }
+.icon-14:before { content: "I"; }
+.icon-15:before { content: "W"; }
+.icon-16:before { content: "I"; }
+.icon-17:before { content: "W"; }
+.icon-18:before { content: "U"; }
+.icon-19:before { content: "Z"; }
+.icon-20:before { content: "Z"; }
+.icon-21:before { content: "Z"; }
+.icon-22:before { content: "Z"; }
+.icon-23:before { content: "Z"; }
+.icon-24:before { content: "E"; }
+.icon-25:before { content: "E"; }
+.icon-26:before { content: "3"; }
+.icon-27:before { content: "a"; }
+.icon-28:before { content: "A"; }
+.icon-29:before { content: "a"; }
+.icon-30:before { content: "A"; }
+.icon-31:before { content: "6"; }
+.icon-32:before { content: "1"; }
+.icon-33:before { content: "6"; }
+.icon-34:before { content: "1"; }
+.icon-35:before { content: "W"; }
+.icon-36:before { content: "1"; }
+.icon-37:before { content: "S"; }
+.icon-38:before { content: "S"; }
+.icon-39:before { content: "S"; }
+.icon-40:before { content: "M"; }
+.icon-41:before { content: "W"; }
+.icon-42:before { content: "I"; }
+.icon-43:before { content: "W"; }
+.icon-44:before { content: "a"; }
+.icon-45:before { content: "S"; }
+.icon-46:before { content: "U"; }
+.icon-47:before { content: "S"; }
+
+#lower-third {
+
+  font-family: "Roboto", sans-serif;
+
+  text-transform: uppercase;
+  margin: auto;
+  padding: 0;
+  margin-top: -30px;
+  margin-bottom: 0px;
+  position: relative;
+}
+#lower-third .section-1 .current{
+  padding: 5px;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  word-wrap: break-word;
+  text-align: center;
+  background: url('../img/fondo degradado.jpg')no-repeat;
+  background-size: 100%;
+  color: #fff;
+  /*line-height: 1; */
+  height: 30px;
+
+
+}
+#lower-third .section-2 {
+
+  height: 120px;
+
+}
+#lower-third .section-2 .headline {
+  margin: 0;
+  padding: 15px;
+  width: 100%;
+  line-height: 30px;
+  color: #1368ac;
+  word-wrap: break-word;
+
+}
+#lower-third .section-2 .imgthumb{
+  display:inline-block;
+  margin: auto;
+  max-width:100% !important;
+  height:120px;
+  overflow: hidden;
+}
+
+#lower-third .section-3 {
+  background-color: #06344a;
+  color: #fff;
+  font-weight: 450;
+  text-align: center;
+  padding: 10px;
+  height: 50px;
+
+}
+#lower-third .section-3 ul {
+  margin: 0;
+  padding: 5px;
+}
+#lower-third .section-3 li {
+  margin: 0px;
+  border-left: 3px solid #fff;
+  list-style:none;
+}
+
+#lateral {
+  -webkit-box-shadow: -16px 15px 48px -22px rgba(0,0,0,0.95);
+  -moz-box-shadow: -16px 15px 48px -22px rgba(0,0,0,0.95);
+  box-shadow: -16px 15px 48px -22px rgba(0,0,0,0.95);
+    margin-bottom: 0px;
+}
+
+#lateral .contacto {
+  background: url('../img/fondo degradado.jpg')no-repeat center;
+  color: #fff;
+  height: 35px;
+  padding: 10px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+#lateral .tiempo{
+  background: url('../img/fondo degradado.jpg')no-repeat center;
+
+}
+
+
+#lateral .tiempo .hoy{
+  margin-top: 15px;
+  background: url('../img/fondo clima-01.png')no-repeat center ;
+  background-size: 90% 100%;
+  padding: 15px;
+
+  color: #fff;
+}
+#lateral .tiempo .mañana{
+  font-family: weather;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background: url('../img/fondo clima-01.png')no-repeat center ;
+  background-size: 90% 100%;
+  padding: 15px;
+  color: #fff;
+}
+#lateral ul {
+  margin: 0;
+  padding: 0;
+}
+
+#lateral li {
+  list-style:none;
+  text-align: center;
+}
+
+#lateral .currently {
+  margin: 20px 15px;
+}
+#lateral .tiempo i{
+
+  font-family: weather;
+  color: #fff;
+  font-size: 95px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: .5;
+  text-transform: none;
+  padding: 15px;
+
+
+}
+#lateral .tiempo .clock {
+
+  font-size: 20px;
+  font-weight: 650;
+  text-align: center;
+  padding: 5px;
+}
+#lateral .tiempo h2{
+  margin: 15px 0 15px;
+   color: #fff;
+   font-size: 50px;
+   font-weight: 300;
+   text-align: center;
+   text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+#lateral .tiempo .logo{
+ text-align: center;
+
+}
+#lateral .tiempo .pronostico{
+  background: url('../img/fondo clima-01.png')no-repeat center;
+  color: #fff;
+}
+#lateral .logotype{
+  filter: drop-shadow(5px 5px 10px #f0f0f0);
+  display: block;
+    margin: auto;
+    width: 60%;
+    height: 60%;
+
+}
+#lateral .social  {
+  display: block;
+  margin:15px;
+  padding: 5px;
+  vertical-align: middle;
+  list-style: none;
+  color: #1368ac;
+  text-align: justify;
+
+}
+
+
+#lateral .social p{
+  margin: 5px;
+}

@@ -39,4 +39,4 @@ Route::get('videos/{id}/destroy','VideosController@destroy')->name('VideosContro
 Route::get('/titulos', 'TitulosController@index');
 Route::get('/canales', 'CanalesController@index');
 Route::resource('/profile', 'EditController');
-//Auth::routes();
+Auth::routes();

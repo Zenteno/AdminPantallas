@@ -46,7 +46,7 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <a class="videoEnviar" href="#" video="{{ $video->id }}">
+                                            <a class="videoEnviar" href="#" video="{{ $video->id }}" nombre="{{ $video->vi_nombreViejo}}">
                                                 <span class="glyphicon glyphicon glyphicon-ok">
                                                 </span>
                                             </a>
@@ -80,10 +80,10 @@
                                     <td>
                                         {{ $video->vi_nombreViejo }}
                                     </td>
-                                    <td>
+                                    <td video="{{ $video->id }}">
                                         <span class="glyphicon glyphicon-remove">
                                         </span>
-                                        <span class="glyphicon glyphicon-play .btn.btn-app" video="{{ $video->id }}">
+                                        <span class="glyphicon glyphicon-play .btn.btn-app">
                                         </span>
                                     </td>
                                 </tr>

@@ -9,4 +9,6 @@ class VideoPantalla extends Model
     protected $table = 'video_pantallas';
 
     protected $fillable = ['pantalla','video'];
+
+    
 }

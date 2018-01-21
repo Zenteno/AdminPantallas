@@ -37,7 +37,7 @@
                             </a>
                         </td>
                         <td>
-                            <a class="videoEnviar" href="#" video="`+data.result.id+`">
+                            <a class="videoEnviar" href="#" video="`+data.result.id+`" nombre="`+data.result.vi_nombreViejo+`">
                                 <span class="glyphicon glyphicon glyphicon-ok">
                                 </span>
                             </a>
@@ -59,7 +59,7 @@
 		.parent().addClass($.support.fileInput ? undefined : 'disabled');
 
 		function enviarVideo(e){
-			var video = $(e.currentTarget.parentNode.parentNode.firstChild).html().trim();
+			var video = $(e.currentTarget).attr("nombre");
 			var idVideo= $(e.currentTarget).attr("video");
 			ws.send(JSON.stringify({
 				comando : 1,
@@ -74,9 +74,9 @@
 				if(data!=""){
 					$("#personal").append(`<tr id="`+idVideo+`">
 						<td>`+video+`</td>
-						<td>
-							<span class="glyphicon glyphicon-remove" id="borrar"></span>
-							<span class="glyphicon glyphicon-play"></span>
+						<td video="`+idVideo+`">
+							<span class="glyphicon glyphicon-remove"></span>
+							<span class="glyphicon glyphicon-play .btn.btn-app"></span>
 						</td>
 						</tr>`);
 					$(".glyphicon-play").unbind("click");
@@ -112,28 +112,27 @@
 		});
 			//funciones de play
 					function playManual(){
-						var video = this.parentNode.previousElementSibling.firstChild.textContent;
+						var video = $(this.parentNode).attr("video")+".mp4";
 						ws.send(JSON.stringify({
 							comando: 3,
 							archivo : video
 						}));
 					}
 					function remover(){
-				console.log("eliminando");
-						var video = this.parentNode.previousElementSibling.firstChild.textContent;
-				console.log(video);
+						var video = $(this.parentNode).attr("video")+".mp4";
 						ws.send(JSON.stringify({
 							comando: 4,
 							archivo : video
 						}));
 						$(this).html();
-				$.post( "/borrar",
+						$.post( "/borrar",
 							{
 								_token : "{{ csrf_token() }}",
-								archivo: this.parentNode.previousElementSibling.firstChild.textContent
+								archivo: $(this.parentNode).attr("video"),
+								pantalla : 1
 							}, function(data){
-					location.reload(true);
-				  });
+								location.reload(true);
+				  		});
 
 					}
 					$(".glyphicon-play").click(playManual);

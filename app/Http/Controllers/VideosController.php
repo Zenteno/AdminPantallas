@@ -74,13 +74,9 @@ class VideosController extends Controller
 
 
 	public function borrar(Request $request){
-		$archivo = $request["archivo"];
-		if(File::exists('./storage/Videos/1/'.$archivo)){
-			File::delete('./storage/Videos/1/'.$archivo);
-		}else{
-			dd('El archivo no existe.');
-		}
-		return $archivo;
+		$video = $request["archivo"];
+		$pantalla = $request["pantalla"];
+		VideoPantalla::where("video",$video)->where("pantalla",$pantalla)->delete();
 	}
 
 	public function enviar(Request $request){
