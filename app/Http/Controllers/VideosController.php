@@ -58,9 +58,10 @@ class VideosController extends Controller
 			$video->us_id = \Auth::user()->id;
 			$file = $request->file('archivos');
 			$nombre = $file[0]->getClientOriginalName();
+			$extension = pathinfo($file[0]->getClientOriginalName(), PATHINFO_EXTENSION);
 			$video->vi_nombreViejo = $nombre; 
 			if($video->save()){
-		   		$video->vi_nombreNuevo = $video->id.'.mp4';
+		   		$video->vi_nombreNuevo = $video->id.".".$extension;
 			  	$ruta = $file[0]->storeAs('public/Videos/Completo',$video->vi_nombreNuevo); 
 			  	$video->vi_ruta = $ruta;
 		   		$video->save();      
@@ -69,7 +70,8 @@ class VideosController extends Controller
 		}
 		return ;
 			
-	  }
+	}
+
 
 	public function borrar(Request $request){
 		$archivo = $request["archivo"];
@@ -80,6 +82,7 @@ class VideosController extends Controller
 		}
 		return $archivo;
 	}
+
 	public function enviar(Request $request){
 		$video = $request["video"];
 		$pantalla = $request["pantalla"];
@@ -159,4 +162,5 @@ class VideosController extends Controller
 		$video->delete();
 		return redirect()->route('videos.index');
 	}
+
 }

@@ -30,6 +30,7 @@ Route::get('/home', 'HomeController@index');
 
 
 Route::resource('/videos','VideosController');
+Route::get('/api/descargar/{id}','ApiController@descargar');
 Route::post('/archivos', 'VideosController@archivo');
 Route::post('/copiar', 'VideosController@copiar');
 Route::post('/borrar', 'VideosController@borrar');
@@ -38,4 +39,4 @@ Route::get('videos/{id}/destroy','VideosController@destroy')->name('VideosContro
 Route::get('/titulos', 'TitulosController@index');
 Route::get('/canales', 'CanalesController@index');
 Route::resource('/profile', 'EditController');
-Auth::routes();
+//Auth::routes();
