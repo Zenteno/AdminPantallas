@@ -11,25 +11,42 @@
 	  user experience. Slimscroll is required when using the
 	  fixed layout. -->
 
-	  <script type="text/javascript">
-				var ws;
-				$(document).ready(function(){
-					ws = new WebSocket("ws://192.168.10.10:8080");
-				});
+	<script type="text/javascript">
+		var ws;
+		$(document).ready(function(){
+			ws = new WebSocket("ws://192.168.10.10:8080");
+		});
+		$(".videoEnviar").click(enviarVideo);
+		var url = '/archivos';
+		$('#fileupload').fileupload({
+			url: url,
+			dataType: 'json',
+			formData: {
+				_token : "{{ csrf_token() }}"
+			},
+			done: function (e, data) {
+				$("#totales tbody").append(`
+					<tr>
+                        <td>
+                            `+data.result.vi_nombreViejo+`
+                        </td>
+                        <td>
+                            <a class="vT" href="/videos/`+data.result.id+`/destroy">
+                                <span class="glyphicon glyphicon-minus">
+                                </span>
+                            </a>
+                        </td>
+                        <td>
+                            <a class="videoEnviar" href="#" video="`+data.result.id+`">
+                                <span class="glyphicon glyphicon glyphicon-ok">
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+				`);
+				$(".videoEnviar").unbind("click");
 				$(".videoEnviar").click(enviarVideo);
-				 var url = '/archivos';
-				$('#fileupload').fileupload({
-					url: url,
-					dataType: 'json',
-					formData: {
-						_token : "{{ csrf_token() }}"
-					},
-					done: function (e, data) {
-						console.log(data);
-						$("#totales").append('<li><a class="vT" href="#">'+data.result.nombre+'</a></li>');
-						$(".videoEnviar").unbind("click");
-						$(".videoEnviar").click(enviarVideo);
-					}/*,
+			}/*,
 					progressall: function (e, data) {
 						var progress = parseInt(data.loaded / data.total * 100, 10);
 						$('#progress .progress-bar').css(
@@ -37,51 +54,62 @@
 							progress + '%'
 						);
 					}*/
-				}).prop('disabled', !$.support.fileInput)
-				.parent().addClass($.support.fileInput ? undefined : 'disabled');
-				function enviarVideo(e){
-					var video = $(e.currentTarget.parentNode.parentNode.firstChild).html().trim();
-					var idVideo= $(e.currentTarget).attr("video");
-					ws.send(JSON.stringify({
-						comando : 1,
-						archivo : idVideo
-					}));
+		})
+		.prop('disabled', !$.support.fileInput)
+		.parent().addClass($.support.fileInput ? undefined : 'disabled');
+
+		function enviarVideo(e){
+			var video = $(e.currentTarget.parentNode.parentNode.firstChild).html().trim();
+			var idVideo= $(e.currentTarget).attr("video");
+			ws.send(JSON.stringify({
+				comando : 1,
+				archivo : idVideo
+			}));
+			$.post("/enviar",
+			{
+				pantalla : 1,
+				video: idVideo,
+				_token : "{{ csrf_token() }}"
+			},function(data){
+				if(data!=""){
 					$("#personal").append(`<tr id="`+idVideo+`">
-							<td>`+video+`</td>
-							<td>
-						<span class="glyphicon glyphicon-remove" id="borrar"></span>&nbsp;&nbsp;&nbsp;
-								<span class="glyphicon glyphicon-play"></span>
-							</td>
+						<td>`+video+`</td>
+						<td>
+							<span class="glyphicon glyphicon-remove" id="borrar"></span>
+							<span class="glyphicon glyphicon-play"></span>
+						</td>
 						</tr>`);
 					$(".glyphicon-play").unbind("click");
 					$(".glyphicon-play").click(playManual);
 					$(".glyphicon-remove").click(remover);
-
+			
 				}
-				$("#config").click(function(){
-			  		console.log($("boolGC").is(':checked'));
-					ws.send(JSON.stringify(
-						{
-							comando: 2,
-							boolVideo: $("#boolVideo").is(':checked') ,
-							boolGC: $("#boolGC").is(':checked') ,
-							linkManual: $("#linkManual").val(),
-							gcManual: $("#gcManual").val()
-						}
-					));
-				});
-			//LInk video manual sin cambio de Titulos
-			$("#streaming").click(function(){
-			  console.log("dsfasdfadfasdf");
-			  console.log($("#boolVideo").is(':checked'));
-					ws.send(JSON.stringify(
-						{
-							comando: 10,
-							boolVideo: $("#boolVideo").is(':checked'),
-							linkManual: $("#linkManual").val(),
-						}
-					));
-				});
+			});
+		}
+		$("#config").click(function(){
+			console.log($("boolGC").is(':checked'));
+			ws.send(JSON.stringify(
+				{
+					comando: 2,
+					boolVideo: $("#boolVideo").is(':checked') ,
+					boolGC: $("#boolGC").is(':checked') ,
+					linkManual: $("#linkManual").val(),
+					gcManual: $("#gcManual").val()
+				}
+			));
+		});
+		//Link video manual sin cambio de Titulos
+		$("#streaming").click(function(){
+		  	console.log("dsfasdfadfasdf");
+		  	console.log($("#boolVideo").is(':checked'));
+			ws.send(JSON.stringify(
+				{
+					comando: 10,
+					boolVideo: $("#boolVideo").is(':checked'),
+					linkManual: $("#linkManual").val(),
+				}
+			));
+		});
 			//funciones de play
 					function playManual(){
 						var video = this.parentNode.previousElementSibling.firstChild.textContent;

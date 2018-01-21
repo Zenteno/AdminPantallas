@@ -31,10 +31,9 @@
                                 <input id="fileupload" multiple="" name="archivos[]" type="file"/>
                             </a>
                         </span>
-                        <table class="table ">
+                        <table class="table " id="totales">
                             <tbody>
                                 <!-- tabla de los videos subisdos -->
-                                <ul class="nav nav-pills nav-stacked" id="totales">
                                     @foreach ($repo as $video)
                                     <tr>
                                         <td>
@@ -54,7 +53,6 @@
                                         </td>
                                     </tr>
                                     @endforeach
-                                </ul>
                             </tbody>
                         </table>
                         <br>

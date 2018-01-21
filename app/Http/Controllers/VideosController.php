@@ -65,21 +65,31 @@ class VideosController extends Controller
 			  	$video->vi_ruta = $ruta;
 		   		$video->save();      
 	   		} 
-			return ["success"=>true, "nombre"=>$nombre];
+			return $video;
 		}
 		return ;
 			
 	  }
-	  
-	  public function borrar(Request $request){
+
+	public function borrar(Request $request){
 		$archivo = $request["archivo"];
 		if(File::exists('./storage/Videos/1/'.$archivo)){
-		  File::delete('./storage/Videos/1/'.$archivo);
+			File::delete('./storage/Videos/1/'.$archivo);
 		}else{
-		  dd('El archivo no existe.');
+			dd('El archivo no existe.');
 		}
 		return $archivo;
-	  }
+	}
+	public function enviar(Request $request){
+		$video = $request["video"];
+		$pantalla = $request["pantalla"];
+		$videoPantalla = VideoPantalla::where("video",$video)->where("pantalla",$pantalla)->get();
+		if(count($videoPantalla)==0){
+			$insercion = VideoPantalla::create(["video" =>$video, "pantalla"=>$pantalla]);
+			return $insercion;
+		}
+			
+	}
 
 
 
