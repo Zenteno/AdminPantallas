@@ -55,6 +55,7 @@ $(document).ready(function() {
 					}
 				});
 			}).fail(function() {
+				//db.get('playlist').remove().write();
 				videos = db.get('playlist').value();
 				reproducir();
 	    	});

@@ -17,7 +17,7 @@
 			ws = new WebSocket("ws://192.168.10.10:8080");
 		});
 		$(".videoEnviar").click(enviarVideo);
-		var url = '/archivos';
+		var url = '/api/archivos';
 		$('#fileupload').fileupload({
 			url: url,
 			dataType: 'json',
