@@ -16,6 +16,7 @@ var GCcen = false;
 var GCder = false;
 var linkVideo = false;
 var flag = true;
+var flagsub = false;
 var db = null;
 var adapter = null;
 
@@ -74,27 +75,19 @@ $(document).ready(function() {
   					.write();
   				videos = db.get('playlist').value();
   				break;
-			case 2:
-				var flagGC=false;
+			case 7:
 				var flagVideo = false;
-				if(boolGC != datos.boolGC)
-					flagGC=true;
 				if(boolVideo != datos.boolVideo)
 					flagVideo=true;
-				boolGC = datos.boolGC;
 				boolVideo = datos.boolVideo;
 				try{
-					if(flagGC || GC!=datos.gcManual){
-						GC = datos.gcManual;
-						setNoticia();
-					}
 					linkVideo = datos.linkManual;
-					if(flagVideo )
-						reproducir();
+					reproducir();
 
 				}catch(err){}
 				break;
 			case 3:
+				boolVideo = false;
 				playManual(datos.archivo);
 				break;
 			case 4:
@@ -121,38 +114,23 @@ $(document).ready(function() {
 				}catch(err){}
 			break;
 			case 6:
-				var flagsub = false;
-				if(boolGCsub != datos.boolGCsub)
-					flagsub=true;
-				try{
-					if(flagsub || GCizq!=datos.subtitulo){
+				flagsub = datos.boolGCsub;
+				var ind = datos.indicador;
+				switch(ind){
+					case 1:
 						GCizq = datos.subtitulo;
-						setIndicador(1);
-					}
-				}catch(err){}
-			break;
-			case 7:
-				var flagsub = false;
-				if(boolGCsub != datos.boolGCsub)
-					flagsub=true;
-				try{
-					if(flagsub || GCcen!=datos.subtitulo){
+						setIndicador(ind);
+						break;
+					case 2:
 						GCcen = datos.subtitulo;
-						setIndicador(2);
-					}
-				}catch(err){}
-			break;
-			case 8:
-				var flagsub = false;
-				if(boolGCsub != datos.boolGCsub)
-					flagsub=true;
-				try{
-					if(flagsub || GCder!=datos.subtitulo){
+						setIndicador(ind);
+						break;
+					case 3:
 						GCder = datos.subtitulo;
-						setIndicador(3);
-					}
-				}catch(err){}
-			break;
+						setIndicador(ind);
+						break;
+				}
+				break;
 		}
 
 	}
@@ -263,24 +241,30 @@ function getIndicadores(){
 function setIndicador(indicador){
 	if (dailyIndicators.length==0)
 		return;
-	if(boolGCsub){
-		switch (indicador) {
-			case 1:
+	
+	switch (indicador) {
+		case 0:
+			flagsub=false;
+			for (var i = 1; i<=3; i++) 
+				setIndicador(i);
+			break;
+		case 1:
+			if(flagsub)
 				$("#tizq").html(GCizq);
-				return;
-				break;
-			case 2:
+			else
+				$("#tizq").html("uf:  $" + dailyIndicators.uf.valor);
+			break;
+		case 2:
+			if(flagsub)
 				$("#tcen").html(GCcen);
-				return;
-				break;
-		  case 3:
+			else
+				$("#tcen").html("Dolar:  $" + dailyIndicators.dolar.valor);
+			break;
+	  	case 3:
+			if(flagsub)
 				$("#tder").html(GCder);
-				return;
-				break;
-		};
-	return;
+			else
+				$("#tder").html("UTM:  $" + dailyIndicators.utm.valor);
+			break;		
 	}
-	$("#tizq").html("uf:  $" + dailyIndicators.uf.valor);
-	$("#tcen").html("Dolar:  $" + dailyIndicators.dolar.valor);
-	$("#tder").html("UTM:  $" + dailyIndicators.utm.valor);
 }
