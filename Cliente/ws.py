@@ -1,6 +1,5 @@
 import websocket
 import json
-import wget
 import thread
 import os
 import subprocess
@@ -14,7 +13,6 @@ def on_message(ws, message):
 				#url = "http://pantalla.test/api/descargar/"+dato["archivo"]
 				url = "http://201.217.242.94:8000/api/descargar/"+dato["archivo"]
 				subprocess.Popen(["wget","--content-disposition",url,"-P",carpeta])
-				#filename = wget.download(url, out=carpeta)
 			if dato["comando"] == 4:
 				os.remove(carpeta+dato["archivo"])
 		except Exception as e:
@@ -33,7 +31,7 @@ def on_open(ws):
 
 
 if __name__ == "__main__":
-	# enableTrace habilita modo depuración
+	# enableTrace habilita modo depuracion
 	websocket.enableTrace(False)
 	ws = websocket.WebSocketApp("ws://201.217.242.94:8080",
 	#ws = websocket.WebSocketApp("ws://192.168.10.10:8080",
