@@ -82,6 +82,7 @@
 							</tr>`);
 				$(".glyphicon-play").unbind("click");
 				$(".glyphicon-play").click(playManual);
+				$(".glyphicon-remove").unbind("click");
 				$(".glyphicon-remove").click(remover);
 
 			}
