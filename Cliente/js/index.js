@@ -197,15 +197,14 @@ function setWeather(){
 }
 
 function setNoticia(){
-	if (nacional.length==0)
-		return;
 	if(boolGC){
 		$("#titular").html(GC);
 		var imagen = "img/biored.png";
 		$("#thumbnail").attr('src',imagen);
 		return;
 	}
-
+	if (nacional.length==0)
+		return;
 	$("#titular").html(nacional[i].title); //"titulo" si es para radiobiobio
 	//var imagen = nacional[i].images.escritorio;  //para radio biobiochile
 	var imagen = "img/biored.png";
