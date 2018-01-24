@@ -23,9 +23,9 @@
 					<h3>Titular Principal</h3>
 					<div class="input-group">
 						<span class="input-group-addon">
-						<input type="checkbox" aria-label="..." id="boolTitulo">
+						<input type="checkbox"  aria-label="..." id="boolTitulo">
           </span>
-						<input placeholder="Ingrese texto a mostrar en seccion de titular Principal" type="text" class="form-control" aria-label="..." id="gcManual">
+						<input placeholder="Ingrese texto a mostrar en seccion de titular Principal" type="text" class="form-control"  maxlength="118" aria-label="..." id="gcManual">
 					</div>
 					<br>
           <button class="btn btn-primary button" id="envtitulo">Enviar Titulo Principal</button>
@@ -50,7 +50,7 @@
 						<span class="input-group-addon">
 						<input type="checkbox" aria-label="..." id="checkizquierda">
           </span>
-						<input placeholder="Ingrese texto a mostrar en sección de titulo izquierda" type="text" class="form-control" aria-label="..." id="izquierda">
+						<input placeholder="Ingrese texto a mostrar en sección de titulo izquierda" type="text" class="form-control" maxlength="25" aria-label="..." id="izquierda">
 						<span class="input-group-btn">
 							<button class="btn btn-primary btn-flat btn-sub" id="btnizq">enviar</button>
         		</span>
@@ -60,7 +60,7 @@
 						<span class="input-group-addon">
 						<input type="checkbox" aria-label="..." id="checkcentral">
           </span>
-						<input placeholder="Ingrese texto a mostrar en sección de titulo central" type="text" class="form-control" aria-label="..." id="centro">
+						<input placeholder="Ingrese texto a mostrar en sección de titulo central" type="text" class="form-control" maxlength="25" aria-label="..." id="centro">
 						<span class="input-group-btn">
 							<button class="btn btn-primary btn-flat btn-sub" id="btncen">enviar</button>
         		</span>
@@ -70,7 +70,7 @@
 						<span class="input-group-addon">
 							<input type="checkbox" aria-label="..." id="checkderecha">
           	</span>
-						<input placeholder="Ingrese texto a mostrar en sección de titulo derecha" type="text" class="form-control" aria-label="..." id="derecha">
+						<input placeholder="Ingrese texto a mostrar en sección de titulo derecha" type="text" class="form-control" maxlength="25" aria-label="..." id="derecha">
 						<span class="input-group-btn">
 							<button class="btn btn-primary btn-flat btn-sub" id="btnder">enviar</button>
         		</span>
