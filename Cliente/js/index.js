@@ -58,7 +58,6 @@ $(document).ready(function() {
 			}).fail(function() {
 				//db.get('playlist').remove().write();
 				videos = db.get('playlist').value();
-				console.log(videos);
 				reproducir();
 	    	});
 
@@ -100,6 +99,7 @@ $(document).ready(function() {
 				db.get('playlist').remove({
 					archivo: datos.archivo
 				}).write();
+				videos = db.get('playlist').value();
 				break;
 				
 				/*db.find({
@@ -164,6 +164,9 @@ $(document).ready(function() {
 });
 
 
+
+
+
 function reproducir(){
 	setTimeout(function(){
 		if(boolVideo)
@@ -171,12 +174,23 @@ function reproducir(){
 		else{
 			
 			if(videos.length>0){
-				console.log("hola");
-				reproductor.setSrc(videos[j].archivo);
-				reproductor.play();
-				j++;
-				if(j==videos.length)
-					j=0;
+				$.ajax({
+				    type: 'HEAD',
+				    url: videos[j].archivo,
+				    success: function() {
+				        reproductor.setSrc(videos[j].archivo);
+						reproductor.play();
+						j++;
+						if(j==videos.length)
+							j=0;
+					},
+				    error: function() {
+				    	j++;
+						if(j==videos.length)
+							j=0;
+				    	reproducir();
+				    }
+				});
 			}
 		}
 	},1000);
