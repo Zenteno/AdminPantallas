@@ -63,7 +63,8 @@ $(document).ready(function() {
 
 		}
 	});
-	var ws = new WebSocket("ws://201.217.242.94:8080");
+	var ws = new ReconnectingWebSocket("ws://201.217.242.94:8080");
+	ws.timeoutInterval = 1000;
 	//var ws = new WebSocket("ws://192.168.10.10:8080");
 	ws.onmessage = function(e){
 		var datos = JSON.parse(e.data);
