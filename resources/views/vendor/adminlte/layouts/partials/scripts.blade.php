@@ -63,16 +63,16 @@
 	function enviarVideo(e) {
 		var video = $(e.currentTarget).attr("nombre");
 		var idVideo = $(e.currentTarget).attr("video");
-		ws.send(JSON.stringify({
-			comando: 1,
-			archivo: idVideo
-		}));
 		$.post("/enviar", {
 			pantalla: 1,
 			video: idVideo,
 			_token: "{{ csrf_token() }}"
 		}, function(data) {
 			if (data != "") {
+				ws.send(JSON.stringify({
+					comando: 1,
+					archivo: idVideo
+				}));
 				$("#personal").append(`<tr id="` + idVideo + `">
 							<td>` + video + `</td>
 							<td video="` + idVideo + `">
