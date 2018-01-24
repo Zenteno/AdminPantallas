@@ -58,6 +58,7 @@ $(document).ready(function() {
 			}).fail(function() {
 				//db.get('playlist').remove().write();
 				videos = db.get('playlist').value();
+				console.log(videos);
 				reproducir();
 	    	});
 
@@ -87,11 +88,21 @@ $(document).ready(function() {
 				}catch(err){}
 				break;
 			case 3:
-				boolVideo = false;
+				//boolVideo = false;
 				playManual(datos.archivo);
 				break;
+			case 2:
+				boolGC = datos.boolGC;
+				GC = datos.gcManual;
+				setNoticia();
+				break;
 			case 4:
-				db.find({
+				db.get('playlist').remove({
+					archivo: datos.archivo
+				}).write();
+				break;
+				
+				/*db.find({
   					selector: {archivo: {$eq: datos.archivo}}
 				}, function (err, result) {
 					console.log(result);
@@ -100,7 +111,7 @@ $(document).ready(function() {
     						videos = doc;
     					});
     				});
-				});
+				})*/;
 			case 5:
 				var flagVideo = false;
 				if(boolVideo != datos.boolVideo)
@@ -158,7 +169,9 @@ function reproducir(){
 		if(boolVideo)
 			playManual(linkVideo);
 		else{
+			
 			if(videos.length>0){
+				console.log("hola");
 				reproductor.setSrc(videos[j].archivo);
 				reproductor.play();
 				j++;
@@ -206,6 +219,7 @@ function setNoticia(){
 	if (nacional.length==0)
 		return;
 	$("#titular").html(nacional[i].title); //"titulo" si es para radiobiobio
+	
 	//var imagen = nacional[i].images.escritorio;  //para radio biobiochile
 	var imagen = "img/biored.png";
 	$("#thumbnail").attr('src',imagen);
@@ -234,6 +248,7 @@ function getIndicadores(){
 			setIndicador(0);
 	}).fail(function() {
 			console.log('Error al consumir la API!');
+			dailyIndicators =[];
 	});
 }
 
