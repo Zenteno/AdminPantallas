@@ -12,7 +12,7 @@ def on_message(ws, message):
 			if dato["comando"] == 1:
 				#url = "http://pantalla.test/api/descargar/"+dato["archivo"]
 				url = "http://201.217.242.94:8000/api/descargar/"+dato["archivo"]
-				subprocess.Popen(["wget","--content-disposition",url,"-P",carpeta])
+				subprocess.Popen(["wget","-nc"," --content-disposition",url,"-P",carpeta])
 			if dato["comando"] == 4:
 				os.remove(carpeta+dato["archivo"])
 		except Exception as e:
