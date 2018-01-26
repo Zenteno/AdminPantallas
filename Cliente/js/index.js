@@ -88,7 +88,7 @@ $(document).ready(function() {
 				}catch(err){}
 				break;
 			case 3:
-				//boolVideo = false;
+				boolVideo = false;
 				playManual(datos.archivo);
 				break;
 			case 2:
@@ -169,7 +169,7 @@ $(document).ready(function() {
 
 
 function reproducir(){
-	setTimeout(function(){
+	//setTimeout(function(){
 		if(boolVideo)
 			playManual(linkVideo);
 		else{
@@ -194,7 +194,7 @@ function reproducir(){
 				});
 			}
 		}
-	},1000);
+	//},1000);
 
 
 }
